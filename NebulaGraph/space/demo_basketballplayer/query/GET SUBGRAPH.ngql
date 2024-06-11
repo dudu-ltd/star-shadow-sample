@@ -1,0 +1,4 @@
+
+// 支持弹出二级表格，更方便对集合数据进行阅读
+GET SUBGRAPH 1 STEPS FROM {{vertexId}}  
+YIELD VERTICES AS nodes, EDGES AS relationships;
