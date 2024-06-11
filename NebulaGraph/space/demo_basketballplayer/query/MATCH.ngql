@@ -1,0 +1,35 @@
+// 只运行一条脚本，请选中文本再运行
+// 可以通过切换参数区的 1、2、3... 使用不同的模板参数
+
+// 匹配全图空间中的任意 n 个点  
+MATCH (v)  
+RETURN v 
+ LIMIT {{n}} ;
+ 
+// 匹配全图空间中的任意m条三元组，图可视化请切换一下页签
+MATCH (v1:player)-[r:serve]->(v2:team)
+RETURN v1, r, v2
+LIMIT {{m}};
+
+// 点单元格
+// 设置路径 p，其模式为 name 属性值为 Tim Duncan 的点 v 指向相邻的点 v2。返回所有符合条件的路径。
+MATCH p=(v:player{name:"Tim Duncan"})-->(v2) 
+  RETURN p;
+
+// 匹配全图空间中所有 Tag 为 {{tagName}} 的点 
+MATCH (v :{{tagName}})  
+ RETURN v;
+  
+// 使用属性 name 搜索匹配的点
+MATCH ( v : {{tagName}} {name:{{name}}})  
+ RETURN v;
+
+MATCH (v :{{tagName}}) 
+ WHERE v.{{tagName}}.name == {{name}}  
+RETURN v;
+
+// 查找 ID 为 {{vertexId}} 的点。（注：ID 全局唯一）。
+MATCH (v) 
+ WHERE id(v)=={{vertexId}} 
+RETURN v;
+
