@@ -7,13 +7,14 @@ RETURN v
  LIMIT {{n}} ;
  
 // 匹配全图空间中的任意m条三元组，图可视化请切换一下页签
-MATCH (v1:player)-[r:serve]->(v2:team)
+MATCH (v1)-[r]->(v2)
 RETURN v1, r, v2
 LIMIT {{m}};
 
 // 点单元格
 // 设置路径 p，其模式为 name 属性值为 Tim Duncan 的点 v 指向相邻的点 v2。返回所有符合条件的路径。
-MATCH p=(v:player{name:"Tim Duncan"})-->(v2) 
+MATCH p=(v:`患者`)-->(v2) 
+WHERE id(v) == '43740'
   RETURN p;
 
 // 匹配全图空间中所有 Tag 为 {{tagName}} 的点 
